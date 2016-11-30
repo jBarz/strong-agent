@@ -7,13 +7,17 @@
   'targets': [
     {
       'target_name': 'strong-agent',
-      'cflags': [
-        '-fvisibility=hidden',
-        '-fno-exceptions',
-        '-fno-rtti',
-        '-fno-strict-aliasing',
-        '-Wall',
-        '-Wextra',
+      'conditions': [
+        [ 'OS!="os390"', {
+          'cflags': [
+            '-fvisibility=hidden',
+            '-fno-exceptions',
+            '-fno-rtti',
+            '-fno-strict-aliasing',
+            '-Wall',
+            '-Wextra'
+          ]
+        }]
       ],
       # Need to repeat the compiler flags in xcode-specific lingo,
       # gyp on mac ignores the cflags field.
